@@ -6,12 +6,18 @@
 #
 default: &default
   adapter: sqlite3
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  #database: db/development.sqlite3
+  adapter: postgresql
+  database: hackernewsDatabase
+  host: hackernews-clone-1.cwq9h2z23zep.us-east-2.rds.amazonaws.com
+  username: aeortic
+  password: <%= ENV['HACKERNEWS_CLONE_DATABASE_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

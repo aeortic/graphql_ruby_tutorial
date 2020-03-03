@@ -28,6 +28,8 @@ class GraphqlController < ApplicationController
     User.find user_id
   rescue ActiveSupport::MessageVerifier::InvalidSignature
     nil
+  rescue ActiveRecord::RecordNotFound
+    nil
   end
 
   # Handle form data, JSON body, or a blank value
